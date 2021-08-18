@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchData, deleteById } from '../lib/fetch.js';
+import { fetchData } from '../lib/fetch.js';
 import { Link } from 'react-router-dom';
 
 export const List = () => {
@@ -15,9 +15,8 @@ export const List = () => {
   }, []);
   return (
     <>
-      <Link to={'/'}>Volver</Link>
       <br></br>
-
+      <Link to={'/'}>Volver a la pagina principal</Link>
       <ul>
         {item.map((e, i) => {
           return (
