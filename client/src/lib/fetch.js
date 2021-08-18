@@ -14,9 +14,6 @@ export const putData = async (id) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: {
-      id: id,
-    },
   });
 };
 

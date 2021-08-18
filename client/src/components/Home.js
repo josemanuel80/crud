@@ -36,10 +36,11 @@ export const Home = () => {
     const allData = { ...data, [name]: value };
     setData(allData);
   };
-  const handleClick = async (event) => {
+  const handleEdit = async (event) => {
     const { id } = event.currentTarget;
-    const putTheData = await putData(id);
+    const putTheData = await putData(item[id]._id);
     deleteById(item[id]._id);
+    return putTheData;
   };
   const handleDelete = async (event) => {
     event.preventDefault();
@@ -82,7 +83,7 @@ export const Home = () => {
                     {/* <p>{e._id}</p> */}
                     <p>{e.data1}</p>
                     <p>{e.data2}</p>
-                    <button onClick={handleClick} id={i}>
+                    <button onClick={handleEdit} id={i}>
                       editar
                     </button>
                     <button onClick={handleDelete} id={i}>
