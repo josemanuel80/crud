@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { newData } from '../lib/fetch.js';
+import { deleteById, newData, putData } from '../lib/fetch.js';
 import { Link, useParams } from 'react-router-dom';
 import '../style/home.css';
 import { fetchData } from '../lib/fetch.js';
@@ -36,6 +36,11 @@ export const Home = () => {
     const allData = { ...data, [name]: value };
     setData(allData);
   };
+  const handleClick = async (event) => {
+    const { id } = event.currentTarget;
+    const putTheData = await putData(id);
+    deleteById(item[id]._id);
+  };
 
   return (
     <div className="wrapper">
@@ -70,15 +75,15 @@ export const Home = () => {
                     {/* <p>{e._id}</p> */}
                     <p>{e.data1}</p>
                     <p>{e.data2}</p>
+                    <button onClick={handleClick} id={i}>
+                      editar
+                    </button>
                   </li>
                 </>
               );
             })}
           </ul>
-          <li>
-            <button>Editar</button>
-            <button>Borrar</button>
-          </li>
+          <li></li>
         </form>
       </div>
       <div className="sub">

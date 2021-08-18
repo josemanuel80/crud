@@ -8,6 +8,18 @@ export const fetchDataById = async (id) => {
   return fetchById;
 };
 
+export const putData = async (id) => {
+  const putAllData = await fetch(`http://localhost:5000/crud/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: {
+      id: id,
+    },
+  });
+};
+
 export const deleteById = async (id) => {
   const fetchById = await fetch(`http://localhost:5000/crud/${id}`, {
     method: 'DELETE',
