@@ -41,6 +41,13 @@ export const Home = () => {
     const putTheData = await putData(id);
     deleteById(item[id]._id);
   };
+  const handleDelete = async (event) => {
+    event.preventDefault();
+    const { id } = event.currentTarget;
+    const deleteItem = await deleteById(item[id]._id);
+    window.location.reload();
+    return deleteItem;
+  };
 
   return (
     <div className="wrapper">
@@ -77,6 +84,9 @@ export const Home = () => {
                     <p>{e.data2}</p>
                     <button onClick={handleClick} id={i}>
                       editar
+                    </button>
+                    <button onClick={handleDelete} id={i}>
+                      Borrar
                     </button>
                   </li>
                 </>

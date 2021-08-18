@@ -10,19 +10,6 @@ export const List = () => {
     return listed;
   };
 
-  const selected = (event) => {
-    const { id } = event.currentTarget;
-    return id;
-  };
-
-  const deleteId = (event) => {
-    event.preventDefault();
-    const { id } = event.currentTarget;
-    console.log(item[id]._id);
-    deleteById(item[id]._id);
-    window.location.reload();
-  };
-
   useEffect(() => {
     listItems();
   }, []);
@@ -30,19 +17,13 @@ export const List = () => {
     <>
       <Link to={'/'}>Volver</Link>
       <br></br>
-      {JSON.stringify(item)}
 
       <ul>
         {item.map((e, i) => {
           return (
-            <li key={i}>
-              <p>{e._id}</p>
-              <p>{e.data1}</p>
-              <p>{e.data2}</p>
-              <button onClick={deleteId} id={i}>
-                seleccionar
-              </button>
-            </li>
+            <ul key={i}>
+              <li>{JSON.stringify(item)}</li>
+            </ul>
           );
         })}
       </ul>
