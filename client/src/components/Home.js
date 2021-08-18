@@ -25,6 +25,7 @@ export const Home = () => {
     event.preventDefault();
     const { data1, data2 } = data;
     const dataCreated = await newData(data1, data2);
+    window.location.reload();
     return dataCreated;
   };
   const handleChange = (event) => {
@@ -33,8 +34,6 @@ export const Home = () => {
     const allData = { ...data, [name]: value };
     setData(allData);
   };
-
-  const handleVer = () => {};
 
   return (
     <div className="wrapper">
@@ -55,7 +54,9 @@ export const Home = () => {
             value={data.data2}
             onChange={handleChange}
           />
-          <button onClick={handleSubmit}>submit</button>
+          <button type="reset" onClick={handleSubmit}>
+            submit
+          </button>
           <Link to={'/list'}>Ver Base de datos</Link>;<br></br>
           <br></br>
           <ul>
@@ -72,7 +73,6 @@ export const Home = () => {
             })}
           </ul>
           <li>
-            <button onClick={handleVer}>Ver</button>
             <button>Editar</button>
             <button>Borrar</button>
           </li>

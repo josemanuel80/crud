@@ -20,6 +20,7 @@ export const List = () => {
     const { id } = event.currentTarget;
     console.log(item[id]._id);
     deleteById(item[id]._id);
+    window.location.reload();
   };
 
   useEffect(() => {
