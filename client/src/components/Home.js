@@ -24,9 +24,11 @@ export const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { data1, data2 } = data;
-    const dataCreated = await newData(data1, data2);
-    window.location.reload();
-    return dataCreated;
+    if (data1 !== '') {
+      const dataCreated = await newData(data1, data2);
+      window.location.reload();
+      return dataCreated;
+    }
   };
   const handleChange = (event) => {
     event.preventDefault();
@@ -41,22 +43,23 @@ export const Home = () => {
         <form onSubmit={handleSubmit}>
           <p>Nombre</p>
           <input
+            placeholder="nombre"
             type="text"
             name="data1"
             value={data.data1}
             onChange={handleChange}
+            required
           />
           <br></br>
           <p>Edad</p>
           <input
             type="text"
+            required
             name="data2"
             value={data.data2}
             onChange={handleChange}
           />
-          <button type="reset" onClick={handleSubmit}>
-            submit
-          </button>
+          <button onClick={handleSubmit}>submit</button>
           <Link to={'/list'}>Ver Base de datos</Link>;<br></br>
           <br></br>
           <ul>
